@@ -1,0 +1,82 @@
+.page {
+  width: 80%;
+  /* text-align: inherit; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0 0 0 66px;
+}
+
+.form {
+  border: 1px solid #c5c2c2;
+  width: 25%;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* list  */
+
+.card {
+  margin: 0px 0px 2% 2%;
+}
+.list-countener {
+  width: 50%;
+  height: 15rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  /* overflow: auto; */
+  /* border: 1px solid rgb(0 0 0);*/
+}
+
+.true {
+  background-color: hsl(135deg 62% 40%);
+  padding: 4px;
+  border-radius: 10px;
+  color: white;
+}
+.false {
+  background-color: hsl(354deg 70% 54%);
+  padding: 4px;
+  border-radius: 10px;
+  color: white;
+}
+
+.false:after {
+  content: "Complete";
+}
+.true:after {
+  content: "Pending";
+}
+/*  */
+
+/* Header  */
+
+.TODO {
+  width: 80%;
+  text-align: center;
+  display: inline-flex;
+  background: hsl(210deg 10% 23%);
+  margin: 0px 0px 1% 5%;
+  color: hsl(0deg 0% 100%);
+}
+
+#Nav-Div {
+  /* width: 100%; */
+}
+#Navbar {
+  font-size: 25px;
+  background: hsl(216deg 100% 57%);
+  width: 100%;
+  margin: -8px 0px 0.5% -8px;
+  padding: 10px 16px 10px 0px;
+  color: #ccd1d6;
+}
+
+/*  */
