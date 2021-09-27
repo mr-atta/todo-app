@@ -14,7 +14,7 @@ const ToDo = () => {
   // const { handleChange, handleSubmit } = useForm(addItem);
 
   function addItem(item) {
-    console.log(item);
+    // console.log(item);
     item.id = uuid();
     item.complete = false;
     setList([...list, item]);

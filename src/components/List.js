@@ -1,17 +1,61 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
-import SettingsContext from "../context/context";
-import { Card, Button, Elevation } from "@blueprintjs/core";
+import { SettingsContext } from "../context/context";
+import { Card, Elevation } from "@blueprintjs/core";
 
 function List(props) {
   const { toggleComplete, list } = props;
-  const context = useContext(SettingsContext);
+  const set = useContext(SettingsContext);
 
   const [cItems, setCItems] = useState([]);
   const [cPage, setCPage] = useState(1);
-  const [pagesNum, setPagesNum] = useState(
-    Math.ceil(list.length / SettingsContext.number)
-  );
+  const [pagesNum, setPagesNum] = useState(0);
+
+  // console.log(list.length);
+  // console.log(set.number);
+  // console.log(Math.ceil(list.length / set.number)); // ✔
+  // console.log(pagesNum); ///// ✔ >>>  useEffect num 2
+
+  console.log({ cItems });
+  console.log({ cPage });
+  console.log({ pagesNum });
+
+  // useEffect num 1
+  useEffect(() => {
+    if (set.display) {
+      console.log("ttttttttttttttt");
+      // true
+      let start = (cPage - 1) * set.number;
+      let end = start + set.number;
+      setPagesNum(Math.ceil(list.length / set.number));
+      setCItems(list.slice(start, end));
+    } else {
+      console.log("fffffffffffffffffff");
+      // false
+      let elements = list.filter((ele) => {
+        // if false return true
+        return ele.complete === false;
+      });
+      let start = (cPage - 1) * set.number;
+      let end = start + set.number;
+
+      setPagesNum(Math.ceil(elements.length / set.number));
+      setCItems(elements.slice(start, end));
+    }
+  }, [cPage, set.display]);
+
+  function next() {
+    set.setDisplay(!set.display);
+  }
+
+  // useEffect num 2
+  useEffect(() => {
+    let start = (cPage - 1) * set.number;
+    let end = start + set.number;
+
+    setPagesNum(Math.ceil(list.length / set.number));
+    setCItems(list.slice(start, end));
+  }, [list.length]);
 
   const handelPages = () => {
     let pages = [];
@@ -21,6 +65,7 @@ function List(props) {
           key={i}
           onClick={() => {
             setCPage(i);
+            console.log(cPage); ////// ✔
           }}
         >{`page ${i}`}</button>
       );
@@ -45,14 +90,14 @@ function List(props) {
               className={item.complete.toString()}
               onClick={() => toggleComplete(item.id)}
             ></span>
-            {/* <Button>Submit</Button> */}
 
             <hr />
           </div>
         </Card>
       ))}
+      <button onClick={next}>View Completed: </button>
 
-      {/* {handelPages()}
+      {handelPages()}
 
       {cPage > 1 && (
         <button
@@ -72,7 +117,7 @@ function List(props) {
         >
           Next
         </button>
-      )} */}
+      )}
     </div>
   );
 }

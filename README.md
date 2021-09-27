@@ -10,11 +10,30 @@
 
 ### Deployment on sandbox :
 
+> [https://lrk7h.csb.app/](https://lrk7h.csb.app/)
+
 <br>
 
 ### branch name :
 
 > context-settings
+
+<br>
+<hr>
+
+## Phase 2
+
+> To Do List Manager Phase 2: Incorporate configuration settings to the application
+
+#### In this phase, we’ll be adding an editor so that users can save their preferences for the application, allowing them to change some of the default behaviors
+
+### Deployment on sandbox :
+
+<br>
+
+### branch name :
+
+> context-methods
 
 <br>
 <hr>
