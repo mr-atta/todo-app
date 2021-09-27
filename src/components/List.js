@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../context/context";
 import { Card, Elevation } from "@blueprintjs/core";
+import { Input, FormLabel, FormHelperText, FormGroup } from "@mui/material";
 
 function List(props) {
   const { toggleComplete, list } = props;
@@ -73,10 +74,27 @@ function List(props) {
     return pages;
   };
 
+  function deleteItem(id) {
+    const items = list.filter((item) => item.id !== id);
+    setList(items);
+  }
+
   return (
     <div className="list-countener">
-      <span>{`page number ${cPage}`}</span>
-      {list.map((item) => (
+      {/* <span>{`page number ${cPage}`}</span> */}
+
+      <FormGroup>
+        <FormHelperText> Item's numbers in page:</FormHelperText>
+        <Input
+          type="number"
+          Rule
+          name="formControl"
+          defaultValue={set.number}
+          onChange={(e) => set.setNumber(e.target.value)}
+        />
+      </FormGroup>
+
+      {list.map((item, i) => (
         <Card interactive={true} elevation={Elevation.TWO}>
           <div className="card" key={item.id}>
             <p>{item.text}</p>
@@ -92,6 +110,8 @@ function List(props) {
             ></span>
 
             <hr />
+            {/* ??? ❌ */}
+            <button onClick={() => deleteItem(i)}>Delete </button>
           </div>
         </Card>
       ))}
