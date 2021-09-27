@@ -1,17 +1,21 @@
 import React from "react";
+import { useState } from "react";
 
 export const SettingsContext = React.createContext();
 
 export default function SettingsProvider(props) {
-  const state = {
-    display: false,
-    number: 4,
-    string: "string",
-  };
+  const [display, setDisplay] = useState(false);
+  const [number, setNumber] = useState(2);
+  const [string, setString] = useState("");
 
-  // changeTwitter = (twitter) => {
-  //     const [twitter, setTwitter] = useState('');
-  // }
+  const state = {
+    display,
+    number,
+    string,
+    setDisplay,
+    setNumber,
+    setString,
+  };
 
   return (
     <SettingsContext.Provider value={state}>
