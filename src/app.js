@@ -1,15 +1,25 @@
 import React from "react";
 import ToDo from "./components/todo/todo.js";
-import SettingsContext from "./context/context";
+import Header from "./components/Header";
+
+import SettingsProvider from "./context/context";
+// import ContextAuth from "./context/contextAuth";
+
+import Auth from "./components/auth";
+import Login from "./components/login";
+// import Settings from "./components/setting";
 
 import "./app.css";
 
 function App() {
   return (
     <>
-      <SettingsContext>
+      <Header />
+
+      <SettingsProvider>
+        {/* <Settings /> */}
         <ToDo />
-      </SettingsContext>
+      </SettingsProvider>
     </>
   );
 }
