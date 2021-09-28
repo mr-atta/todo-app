@@ -5,7 +5,7 @@ import { Card, Elevation } from "@blueprintjs/core";
 import { Input, FormLabel, FormHelperText, FormGroup } from "@mui/material";
 
 function List(props) {
-  const { toggleComplete, list } = props;
+  const { toggleComplete, list, deleteItem } = props;
   const set = useContext(SettingsContext);
 
   const [cItems, setCItems] = useState([]);
@@ -74,10 +74,10 @@ function List(props) {
     return pages;
   };
 
-  function deleteItem(id) {
-    const items = list.filter((item) => item.id !== id);
-    setList(items);
-  }
+  // function deleteItem(id) {
+  //   const items = list.filter((item) => item.id !== id);
+  //   setList(items);
+  // }
 
   return (
     <div className="list-countener">
@@ -110,8 +110,10 @@ function List(props) {
             ></span>
 
             <hr />
-            {/* ??? ❌ */}
-            <button onClick={() => deleteItem(i)}>Delete </button>
+            {/*  ✔✔ */}
+            <button id="deleteBtn" onClick={() => deleteItem(item.id)}>
+              ❌{" "}
+            </button>
           </div>
         </Card>
       ))}

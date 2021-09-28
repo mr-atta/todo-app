@@ -20,10 +20,10 @@ const ToDo = () => {
     setList([...list, item]);
   }
 
-  // function deleteItem(id) {
-  //   const items = list.filter((item) => item.id !== id);
-  //   setList(items);
-  // }
+  function deleteItem(id) {
+    const items = list.filter((item) => item.id !== id);
+    setList(items);
+  }
 
   function toggleComplete(id) {
     const items = list.map((item) => {
@@ -94,7 +94,11 @@ const ToDo = () => {
           </label>
         </form> */}
 
-        <List list={list} toggleComplete={toggleComplete} />
+        <List
+          list={list}
+          toggleComplete={toggleComplete}
+          deleteItem={deleteItem}
+        />
         {/* {list.map((item) => (
           <div className="card" key={item.id}>
             <p>{item.text}</p>
