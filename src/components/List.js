@@ -6,6 +6,7 @@ import { Input, FormLabel, FormHelperText, FormGroup } from "@mui/material";
 
 function List(props) {
   const { toggleComplete, list, deleteItem } = props;
+
   const set = useContext(SettingsContext);
 
   const [cItems, setCItems] = useState([]);
@@ -15,13 +16,13 @@ function List(props) {
   // console.log(list.length);
   // console.log(set.number);
   // console.log(Math.ceil(list.length / set.number)); // ✔
-  // console.log(pagesNum); ///// ✔ >>>  useEffect num 2
+  // console.log(pagesNum); ///// ✔ >>>  useEffect num 1
 
   console.log({ cItems });
   console.log({ cPage });
   console.log({ pagesNum });
 
-  // useEffect num 1
+  // useEffect num 2
   useEffect(() => {
     if (set.display) {
       console.log("ttttttttttttttt");
@@ -45,11 +46,12 @@ function List(props) {
     }
   }, [cPage, set.display]);
 
+  // f>> t and t>> f
   function next() {
     set.setDisplay(!set.display);
   }
 
-  // useEffect num 2
+  // useEffect num 1
   useEffect(() => {
     let start = (cPage - 1) * set.number;
     let end = start + set.number;
@@ -83,7 +85,7 @@ function List(props) {
     <div className="list-countener">
       {/* <span>{`page number ${cPage}`}</span> */}
 
-      <FormGroup>
+      {/* <FormGroup>
         <FormHelperText> Item's numbers in page:</FormHelperText>
         <Input
           type="number"
@@ -92,7 +94,7 @@ function List(props) {
           defaultValue={set.number}
           onChange={(e) => set.setNumber(e.target.value)}
         />
-      </FormGroup>
+      </FormGroup> */}
 
       {list.map((item, i) => (
         <Card interactive={true} elevation={Elevation.TWO}>
@@ -117,11 +119,10 @@ function List(props) {
           </div>
         </Card>
       ))}
-      <button onClick={next}>View Completed: </button>
 
-      {handelPages()}
+      {/* <button onClick={next}>View Completed: </button> */}
 
-      {cPage > 1 && (
+      {/* {cPage > 1 && (
         <button
           onClick={() => {
             setCPage(cPage - 1);
@@ -129,9 +130,11 @@ function List(props) {
         >
           Previous
         </button>
-      )}
+      )} */}
 
-      {cPage < pagesNum && (
+      {handelPages()}
+
+      {/* {cPage < pagesNum && (
         <button
           onClick={() => {
             setCPage(cPage + 1);
@@ -139,7 +142,7 @@ function List(props) {
         >
           Next
         </button>
-      )}
+      )} */}
     </div>
   );
 }
